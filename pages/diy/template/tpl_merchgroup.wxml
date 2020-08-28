@@ -1,0 +1,13 @@
+<view class="fui-list-group merchgroup" data-itemdata="{php echo json_encode($diyitem)}" data-openlocation="{$diyitem['params']['openlocation']}" style="background: {{diyitem.style.background}}; margin-top: {{diyitem.style.margintop}}rpx;">
+    <view class="fui-list jump" wx:for="{{diyitem.data}}" wx:for-index="childid" wx:for-item="childitem" wx:key="childid">
+        <navigator class="fui-list-media" url="{{'/pages/goods/index/index?merchid='+childitem.merchid}}">
+            <image class="round" src="{{childitem.thumb}}"></image>
+        </navigator>
+        <navigator class="fui-list-inner" url="{{'/pages/goods/index/index?merchid='+childitem.merchid}}">
+            <view class="title" style="color: {{diyitem.style.titlecolor}};height: 75rpx;">{{childitem.name}}
+                <view class="subtitle">{{childitem.desc}}</view>
+            </view>
+        </navigator>
+        <a class="fui-remark jump" data-nocache="true" href="{php echo mobileUrl('merch/map', array('merchid'=>$merchitem['merchid']))}" style="padding-right: 20rpx; text-align: center; line-height: 200rpx;"></a>
+    </view>
+</view>

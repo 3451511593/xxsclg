@@ -1,0 +1,8 @@
+{
+    "navigationBarBackgroundColor": "#FB1732",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "商城直播",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "usingComponents": {}
+}

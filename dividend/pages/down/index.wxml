@@ -1,0 +1,42 @@
+<view class="page">
+    <block wx:for="{{list}}">
+        <navigator class="my-list" hoverClass="none" openType="navigate">
+            <view class="my-list-media">
+                <image src="{{item.avatar}}"></image>
+            </view>
+            <view class="my-list-inner">
+                <view class="text">
+                    <view class="title">{{item.nickname}}</view>
+                    <view class="subtitle">注册时间：{{item.createtime}}</view>
+                </view>
+                <view class="nums">
+                    <view class="num">+{{item.moneycount}}</view>
+                    <view class="num-order">{{item.ordercount}}个订单</view>
+                </view>
+            </view>
+            <view class="my-list-remark noremark"></view>
+        </navigator>
+    </block>
+    <block>
+        <block wx:if="{{loading}}">
+            <view class="fui-loading">
+                <view class="icon"></view>
+                <view class="text">正在加载</view>
+            </view>
+        </block>
+    </block>
+    <block>
+        <block wx:if="{{list.length==total&&total>0&&loading==false}}">
+            <view class="fui-loading empty">
+                <view class="text">没有更多了</view>
+            </view>
+        </block>
+    </block>
+    <block>
+        <block wx:if="{{total<=0&&!loading}}">
+            <view class="fui-loading empty">
+                <view class="text">暂时没有任何下线</view>
+            </view>
+        </block>
+    </block>
+</view>

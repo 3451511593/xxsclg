@@ -1,0 +1,86 @@
+<view class="page" style="{{isIpx?'padding-bottom:168rpx':''}}">
+    <view class="fui-tab fixed" scrollX="true" style="overflow-x:scroll">
+        <view bindtap="tab" class="item {{success==''||success==0?'active':''}}" data-success="0">组团中</view>
+        <view bindtap="tab" class="item {{success=='1'?'active':''}}" data-success="1">组团成功</view>
+        <view bindtap="tab" class="item {{success=='-1'?'active':''}}" data-success="-1">组团失败</view>
+    </view>
+    <block>
+        <block wx:if="{{list.length==0}}">
+            <view class="empty">
+                <image src="/static/images/icon/nolist.png"></image>
+                <view class="text">暂时没有参加任何团</view>
+            </view>
+        </block>
+    </block>
+    <block>
+        <block wx:if="{{list.length>0}}">
+            <view class="group-list-group">
+                <block wx:for="{{list}}">
+                    <navigator class="group-list" url="../groups_detail/index?teamid={{item.teamid}}">
+                        <view class="group-list-header">
+                            <view class="fl">{{item.orderno}}</view>
+                            <block>
+                                <block wx:if="{{item.success==0}}">
+                                    <view class="fr remark text-primary">团购中</view>
+                                </block>
+                            </block>
+                            <block>
+                                <block wx:if="{{item.success==1}}">
+                                    <view class="fr remark text-success">团购成功</view>
+                                </block>
+                            </block>
+                            <block>
+                                <block wx:if="{{item.success==-1}}">
+                                    <view class="fr remark text-fail">团购失败</view>
+                                </block>
+                            </block>
+                        </view>
+                        <view class="group-list-content flex">
+                            <view class="media">
+                                <image src="{{item.thumb}}"></image>
+                            </view>
+                            <view class="inner flex1">
+                                <view class="title">{{item.title}}</view>
+                                <block>
+                                    <block wx:if="{{item.more_spec==1}}">
+                                        <view class="text">规格：{{item.option_name}}</view>
+                                    </block>
+                                </block>
+                            </view>
+                            <view class="remark">
+                                <view>￥{{item.goods_price}}/{{item.goodsnum}}{{item.units}}</view>
+                                <view class="num">x1</view>
+                            </view>
+                        </view>
+                        <view class="group-list-footer">
+      共1件商品 实付:<text>￥{{item.amount}}</text>
+                        </view>
+                    </navigator>
+                </block>
+            </view>
+        </block>
+    </block>
+    <view class="fui-navbar footer-nav {{iphonexnavbar}}">
+        <navigator class="nav-item" hoverClass="none" openType="switchTab" url="/pages/index/index">
+            <span class="icox icox-back"></span>
+            <span class="label">返回商城</span>
+        </navigator>
+        <navigator class="nav-item" hoverClass="none" openType="reLaunch" url="../index/index">
+            <span class="icox icox-shouye1"></span>
+            <span class="label">拼团首页</span>
+        </navigator>
+        <navigator class="nav-item " hoverClass="none" openType="reLaunch" url="../category/index">
+            <span class="icox icox-quanbukanjia"></span>
+            <span class="label">活动列表</span>
+        </navigator>
+        <navigator class="nav-item" hoverClass="none" openType="reLaunch" url="../order/index">
+            <span class="icox icox-kanjiazhong"></span>
+            <span class="label">我的订单</span>
+        </navigator>
+        <navigator class="nav-item active" hoverClass="none">
+            <span class="icox icox-yigoumai"></span>
+            <span class="label">我的团</span>
+        </navigator>
+    </view>
+    <view class="{{isIpx?'fui-iphonex-button':''}}"></view>
+</view>

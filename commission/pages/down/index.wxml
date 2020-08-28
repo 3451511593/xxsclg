@@ -1,0 +1,79 @@
+<block>
+    <block wx:if="{{!show}}">
+        <loading>加载中...</loading>
+    </block>
+</block>
+<block>
+    <block wx:if="{{show}}">
+        <view class="page navbar com-down">
+            <view class="fui-tab fui-tab-warning">
+                <block wx:for="{{levels}}">
+                    <view bindtap="myTab" class="item {{level==item.level?'active':''}}" data-level="{{item.level}}">{{item.name}}(<text>{{item.total}}</text>)</view>
+                </block>
+            </view>
+            <block>
+                <block wx:if="{{list.length>0}}">
+                    <view class="fui-title">
+                        <i class="icox icox-star text-danger"></i> 代表已成为{{textagent}}的{{down}}
+    </view>
+                </block>
+            </block>
+            <block>
+                <block wx:if="{{list.length>0}}">
+                    <view class="fui-list-group">
+                        <block wx:for="{{list}}">
+                            <view class="fui-list">
+                                <view class="fui-list-media">
+                                    <image src="{{item.avatar}}"></image>
+                                </view>
+                                <view class="fui-list-inner">
+                                    <view class="row">
+                                        <view class="row-text">
+                                            <block>
+                                                <block wx:if="{{item.isagent==1&&item.status==1}}">
+                                                    <i class="icox icox-star text-danger"></i>
+                                                </block>
+                                            </block>{{item.nickname||'未获取'}}
+                  </view>
+                                    </view>
+                                    <block>
+                                        <block wx:if="{{item.isagent==1&&item.status==1}}">
+                                            <view class="subtitle">成为{{textagent}}时间: {{item.agenttime}}</view>
+                                        </block>
+                                        <block wx:else>
+                                            <view class="subtitle">注册时间: {{item.createtime}}</view>
+                                        </block>
+                                    </block>
+                                </view>
+                                <block>
+                                    <block wx:if="{{item.isagent==1&&item.status==1}}">
+                                        <view class="row-remark">
+                                            <view>+{{item.commission_total}}</view>
+                                            <view>{{item.agentcount}}个成员</view>
+                                        </view>
+                                    </block>
+                                    <block wx:else>
+                                        <view class="row-remark">
+                                            <view>消费: {{item.moneycount+textyuan}}</view>
+                                            <view>{{item.ordercount}}个订单</view>
+                                        </view>
+                                    </block>
+                                </block>
+                            </view>
+                        </block>
+                    </view>
+                </block>
+            </block>
+            <block>
+                <block wx:if="{{list.length<1}}">
+                    <view class="center">
+                        <view class="empty-tip">
+                            <image class="light" src="/static/images/icon/nomeb.png"></image>
+                            <view class="text-cancel">暂时没有任何数据</view>
+                        </view>
+                    </view>
+                </block>
+            </block>
+        </view>
+    </block>
+</block>

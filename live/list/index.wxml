@@ -1,0 +1,78 @@
+<!--   time:2020-03-06 00:05:26 -->
+<view class="page live-page">
+	<block wx:if="{{empty}}">
+		<view class="center">
+			<view class="empty-list">
+				<image class="light" src="/live/static/empty.png"></image>
+				<view class="text-cancel">暂时没有直播间</view>
+				<navigator class="btn btn-danger-o" openType="switchTab" url="/pages/index/index">去首页逛逛吧</navigator>
+			</view>
+		</view>
+	</block>
+	<block wx:if="{{show}}">
+		<view class="fui-live-list">
+			<block wx:for="{{list}}" wx:for-item="item" wx:for-index="idx" >
+				<navigator class="fui-live-item" url="plugin-private://wx2b03c6e691cd7370/pages/live-player-plugin?room_id={{item.room_id}}">
+					<view class="cover">
+						<image mode="aspectFill" src="{{item.cover_img}}"></image>
+						<block wx:if="{{item.local_live_status==1}}">
+							<view class="status">
+								<image src="/live/static/live_ing.gif"></image>
+								<text class="b">直播中</text>
+							</view>
+						</block>
+						<block wx:if="{{item.local_live_status==0}}">
+							<view class="status">
+								<view class="notice">预告</view>
+								<text>{{item.date_text}}开播</text>
+							</view>
+						</block>
+						<block wx:if="{{item.local_live_status==-1}}">
+							<view class="status">
+								<image src="/live/static/live_end.png"></image>
+								<text>直播结束</text>
+							</view>
+						</block>
+						<block wx:if="{{item.is_top==1&&item.is_top!=2}}">
+							<view class="top">置顶</view>
+						</block>
+						<block wx:if="{{item.is_recommend==1}}">
+							<view class="recommend">
+								<image src="/live/static/live_star.png"></image>
+								<text>推荐</text>
+							</view>
+						</block>
+					</view>
+					<view class="info">
+						<view class="title">{{item.name}}</view>
+						<view class="anchor">
+							<view class="avatar">
+								<image src="{{item.anchor_img}}"></image>
+							</view>
+							<view class="nickname">{{item.anchor_name}}</view>
+						</view>
+						<block wx:if="{{item.goods_list.length>0}}">							<view class="goods-list">
+								<view class="row">
+									<image src="{{item.goods_list[0].cover_img}}"></image>
+									<view class="cover">￥{{item.goods_list[0].price}}</view>
+								</view>
+								<block wx:if="{{item.goods_list.length>1}}">									<view class="row">
+										<image src="{{item.goods_list[1].cover_img}}"></image>
+										<view class="cover br">
+											<view>{{item.goods_list.length}}</view>
+											<view>商品</view>
+										</view>
+									</view>
+								</block>
+							</view>
+						</block>
+					</view>
+				</navigator>
+			</block>
+			<block wx:if="{{(loaded&&list.length>0)||total==list.length}}">				<view class="fui-loading empty">
+					<view class="text">没有更多了</view>
+				</view>
+			</block>
+		</view>
+	</block>
+</view>

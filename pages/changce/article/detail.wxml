@@ -1,0 +1,76 @@
+<import src="/utils/wxParse/wxParse.wxml" />
+<block wx:if="{{!show}}">
+  <loading>加载中...</loading></block>
+<block wx:if="{{show}}">
+  <view class="container">
+    <view class="detail">
+      <text class="title">{{article.article_title}}</text>
+      <view class="userinfo">
+        <view class="info1">
+          <image src="{{article.resp_img}}"></image>
+          <view class="v">v</view></view>
+        <view class="info2">
+          <text class="name">{{article.article_mp}} {{article.article_author}}</text>
+          <text class="time">{{article.article_date}}</text></view>
+      </view>
+      <view class="detailinfo">
+        <view class="wxParse">
+          <template data="{{wxParseData:wxParseData.nodes}}" is="wxParse" /></view>
+      </view>
+    </view>
+    <view class="envas">
+      <view bindtap="likeit" class="sc" style="background:none">
+        <view class="xin" style='margin:0 auto auto 3%'>
+          <text>
+          阅读 {{article.readnum}}
+          </text>
+          </view>
+      </view>
+      <view bindtap="likeit" class="sc" style="background:none">
+        <view class="xin" style="margin:0 4% auto 0;color:#17abe3;" >
+        <image src="/pages/changce/images/good.png"></image>
+          <text>
+          {{likenum}}
+          </text>
+          </view>
+      </view>
+    </view>
+    
+    <view style="margin-top:-20rpx">
+
+
+<view class='share-modal-bg' wx:if='{{showModal}}' bindtap="hideModal">
+  <view class='canvas-wrap modalDialog'  catchlongpress='saveImage' > <!--长按保存图片事件-->
+     <view><image src='{{shareImg}}' class='share-img' ></image></view> <!--显示出生成图片的容器 -->
+     <view class='share-img-tips modalFooter'>长按图片保存至相册，快去分享吧！</view>
+  </view>
+</view>
+
+<view class="daochu-view">
+<button class="btn-special" bindtap="begainDrawShareImage" >
+        <image class="icon-daochu" src="/static/images/icon/moments.png" ></image>生成海报
+      </button>
+<button class="btn-special" open-type="share" >
+        <image class="icon-daochu" src="/static/images/icon/wechat.png" ></image>分享
+      </button>
+</view>
+<canvas style="width: 286px;height: 415px;background:red;position: fixed;top: -10000px;" canvas-id="shareFrends"></canvas>
+
+
+      
+    </view>
+
+  </view>
+  
+  <block wx:if="{{article.phone}}">
+    <view bindtap="phone" class="phone" data-phone="{{article.phone}}" style="{{article.phonecolor?'background-color:'+article.phonecolor:''}}">
+      <text class="icox icox-call"></text>
+    </view>
+  </block>
+</block>
+
+<!-- <canvas canvas-id='myCanvas' class='canvas-content' style='height:{{totalHeight * canvasScale}}px;width:{{375*canvasScale}}px'>
+  <cover-view class='save-button' bindtap='saveImage'>
+    <cover-image src="../../img/icon_download_image.png" class="share-image"></cover-image>
+  </cover-view>
+</canvas> -->

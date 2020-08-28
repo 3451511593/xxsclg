@@ -1,0 +1,169 @@
+.fui-list-angle {
+    margin-right: 0;
+}
+
+.fui-navbar {
+    height: 90rpx;
+}
+
+.fui-navbar .nav-item {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.fui-list-inner .title {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.fui-list-inner .text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.realname {
+    display: inline-block;
+    max-width: 300rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-right: 35rpx;
+}
+
+.category-search {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.category-search::before {
+    background: #fff;
+    position: relative;
+    z-index: 10;
+    height: auto;
+    padding-right: 20rpx;
+    padding-left: 20rpx;
+    background-color: #f7f7f8;
+    backface-visibility: hidden;
+    overflow: hidden;
+}
+
+.category-search-form {
+    background: #fff;
+}
+
+.category-search-box {
+    display: flex;
+}
+
+.category-search-bar {
+    padding-top: 98rpx;
+}
+
+.flex-head-search {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    box-sizing: border-box;
+    background: #f1f1f2;
+    padding: 10px 10px;
+}
+
+.searchbar-cancel.searchbtn {
+    width: 80rpx;
+    background: #f1f1f2;
+    height: 56rpx;
+    text-align: right;
+    color: #5f646e;
+    line-height: 56rpx;
+    display: none;
+}
+
+.searchbar-cancel.searchbtn.in {
+    display: block;
+}
+
+.weui-search-bar__form {
+    border: none;
+}
+
+.flex-icon-search {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 0px;
+    top: 0px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.flex-icon-search .icox {
+    position: absolute;
+    font-size: 36rpx;
+    color: #b4b4b4;
+    top: 0;
+    left: 12rpx;
+    line-height: 56rpx;
+}
+
+.flex-icon-search .icox {
+    position: absolute;
+    font-size: 36rpx;
+    color: #b4b4b4;
+    top: 0;
+    left: 12rpx;
+    line-height: 56rpx;
+}
+
+.weui-search-bar__input {
+    text-align: left;
+    color: #999999;
+    background: none;
+    line-height: 30px;
+    padding: 0 10rpx 0 60rpx;
+}
+
+.flex-input {
+    height: 56rpx;
+    line-height: 56rpx;
+    display: block;
+    overflow: hidden;
+}
+
+#weixin_wei {
+    margin-top: 101rpx;
+}
+
+.searchbar-cancel.searchbtn {
+    width: 80rpx;
+    background: #f1f1f2;
+    height: 56rpx;
+    text-align: right;
+    color: #5f646e;
+    line-height: 56rpx;
+    display: none;
+}
+
+.searchbar-cancel.searchbtn.in {
+    display: block;
+}

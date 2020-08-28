@@ -1,0 +1,14 @@
+<image class="logo" src="{{shop_logo}}"></image>
+<view class="title">
+    <text class="title-underline">{{shop_name}}</text>
+</view>
+<view class="message">
+    <text>您尚未登录
+需要获取您的授权后进入商城</text>
+</view>
+<button bindtap="close" class="cancelBtn">
+暂不登录
+</button>
+<button bindgetuserinfo="bindGetUserInfo" class="authBtn" lang="zh_CN" openType="getUserInfo">
+立即登录
+</button>

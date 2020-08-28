@@ -1,0 +1,3 @@
+<!--pages/goods/home/index.wxml-->
+<text>pages/goods/home/index.wxml</text>
+<text>{{merchid}}</text>

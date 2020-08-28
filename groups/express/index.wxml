@@ -1,0 +1,51 @@
+<block>
+    <block wx:if="{{!show}}">
+        <loading>加载中...</loading>
+    </block>
+</block>
+<block>
+    <block wx:if="{{show}}">
+        <view class="page">
+            <view class="fui-list-group">
+                <view class="fui-list express-top">
+                    <view class="fui-list-media">
+                        <image src="{{thumb}}"></image>
+                        <view class="goodsNum">
+                            <text>1</text>件商品</view>
+                    </view>
+                    <view class="fui-list-inner">
+                        <view class="fui-list-inner">
+                    物流状态：<text class="text-success">{{status}}</text>
+                            <view class="text">快递公司：{{com}}<text></text>
+                            </view>
+                            <view class="text">快递单号：{{sn}}<text></text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <block>
+                    <block wx:if="{{!expresslist}}">
+                        <view class="empty">
+                            <image class="light" src="/static/images/icon/deliver-48.png"></image>
+                            <view class="text-cancel">暂时没有物流信息</view>
+                        </view>
+                    </block>
+                </block>
+                <block>
+                    <block wx:if="{{expresslist}}">
+                        <view class="fui-list-group express-list">
+                            <block wx:for="{{expresslist}}">
+                                <view class="fui-list {{index==0?'current':''}}">
+                                    <view class="fui-list-inner">
+                                        <view class="text step">{{item.step}}</view>
+                                        <view class="text time">{{item.time}}</view>
+                                    </view>
+                                </view>
+                            </block>
+                        </view>
+                    </block>
+                </block>
+            </view>
+        </view>
+    </block>
+</block>

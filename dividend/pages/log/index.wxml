@@ -1,0 +1,71 @@
+<view class="moneytop">预计分红：+{{dividendcount}}元</view>
+<view class="flex topnav">
+    <view bindtap="tab" class="{{status=='all'?'active':''}}" data-status="all">所有</view>
+    <view bindtap="tab" class="{{status=='1'?'active':''}}" data-status="1">待审核</view>
+    <view bindtap="tab" class="{{status=='2'?'active':''}}" data-status="2">待打款</view>
+    <view bindtap="tab" class="{{status=='3'?'active':''}}" data-status="3">已打款</view>
+    <view bindtap="tab" class="{{status=='-1'?'active':''}}" data-status="-1">无效</view>
+</view>
+<view class="orderitem">
+    <block wx:for="{{list}}">
+        <navigator class="item" hoverClass="none" openType="navigate" url="/dividend/pages/log/detail/index?id={{item.id}}">
+            <view class="text">
+                <view class="type">
+                    <block>
+                        <block wx:if="{{item.type==0}}">提现到余额</block>
+                    </block>
+                    <block>
+                        <block wx:if="{{item.type==1}}">提现到微信钱包</block>
+                    </block>
+                    <block>
+                        <block wx:if="{{item.type==2}}">提现到支付宝</block>
+                    </block>
+                    <block>
+                        <block wx:if="{{item.type==3}}">提现到银行卡</block>
+                    </block>
+                </view>
+                <view class="inner"></view>
+                <view class="price">+{{item.dividend}}</view>
+            </view>
+            <view class="text" style="margin-top:8rpx;">
+                <view class="date">{{item.dealtime}}</view>
+                <view class="inner"></view>
+                <view class="status {{item.status==0?'status0':''}} {{item.status==1?'status1':''}} {{item.status==2?'status2':''}} {{item.status==3?'status3':''}} {{item.status==-1||item.status==-2?'lose':''}}">
+                    <block>
+                        <block wx:if="{{item.status==1}}">待审核</block>
+                    </block>
+                    <block>
+                        <block wx:if="{{item.status==2}}">待打款</block>
+                    </block>
+                    <block>
+                        <block wx:if="{{item.status==3}}">已打款</block>
+                    </block>
+                    <block>
+                        <block wx:if="{{item.status==-1}}">无效</block>
+                    </block>
+                    <block>
+                        <block wx:if="{{item.status==-2}}">驳回</block>
+                    </block>
+                </view>
+            </view>
+        </navigator>
+    </block>
+</view>
+<block>
+    <block wx:if="{{loading}}">
+        <view class="fui-loading">
+            <view class="icon"></view>
+            <view class="text">正在加载</view>
+        </view>
+    </block>
+</block>
+<block>
+    <block wx:if="{{total<=0&&!loading}}">
+        <view class="center">
+            <view class="empty">
+                <image class="light" src="/static/images/icon/nolist.png"></image>
+                <view class="text-cancel">暂时没有任何明细</view>
+            </view>
+        </view>
+    </block>
+</block>

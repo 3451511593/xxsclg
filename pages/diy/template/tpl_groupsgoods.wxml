@@ -1,0 +1,23 @@
+<view class="fui-goods-group {{diyitem.style.liststyle}}" style="background:{{diyitem.style.background}}">
+    <view class="fui-goods-item" wx:for="{{diyitem.data}}" wx:for-index="childid" wx:for-item="childitem" wx:key="childid">
+        <navigator class="image" data-text="拼团" style="background-image:url({{childitem.thumb}});" url="{{'/groups/goods/index?id='+childitem.gid}}">
+            <view style="position: relative; top: 0; left: 0; z-index: 9;width: 88rpx; height: 40rpx;font-size: 28rpx;background: {{diyitem.style.groupscorner}};text-align: center;color: #fff">拼团</view>
+            <view class="goodsicon" style="position:relative;width:{{iconwidth}}px;height:{{iconheight}}px" wx:if="{{diyitem.params.showicon=='2'}}"></view>
+            <image class="salez" src="{{diyitem.params.saleout==0?'/static/images/saleout-2.png':diyitem.params.saleout}}" wx:if="{{diyitem.params.saleout!=-1&&childitem.total==0&&childitem.cansee<=0||diyitem.params.saleout!=-1&&childitem.total==0&&childitem.cansee>0&&childitem.seecommission<=0}}"></image>
+        </navigator>
+        <view class="detail">
+            <navigator class="name" style="color:{{diyitem.style.titlecolor}}" url="{{'/groups/goods/index?id='+childitem.gid}}" wx:if="{{diyitem.params.showtitle=='1'}}">
+                <text>{{childitem.title}}</text>
+            </navigator>
+            <view class="productprice">
+                <text style="color:{{diyitem.style.productpricecolor}};margin-right:16rpx">原价：<text class="{{diyitem.params.productpriceline=='1'?'line':''}}">￥{{childitem.productprice}}</text>
+                </text>
+            </view>
+            <view class="price" wx:if="{{diyitem.params.showprice=='1'}}">
+                <text class="text" style="color:{{diyitem.style.pricecolor}}">￥{{childitem.price}}</text>
+                <navigator class="buy buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-home="1" data-id="{{childitem.gid}}" style="color:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}" url="{{'/groups/goods/index?id='+childitem.gid}}" wx:if="{{diyitem.style.buystyle=='buybtn-1'&&childitem.ctype!=9&&(childitem.bargain==0||childitem.bargain==null)&&childitem.ctype!=5&&childitem.is_ladder=='0'}}">{{childitem.groupnum}}人团</navigator>
+                <navigator class="buy buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-home="1" data-id="{{childitem.gid}}" style="color:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}" url="{{'/groups/goods/index?id='+childitem.gid}}" wx:if="{{diyitem.style.buystyle=='buybtn-1'&&childitem.ctype!=9&&(childitem.bargain==0||childitem.bargain==null)&&childitem.ctype!=5&&childitem.is_ladder=='1'}}">阶梯团</navigator>
+            </view>
+        </view>
+    </view>
+</view>
